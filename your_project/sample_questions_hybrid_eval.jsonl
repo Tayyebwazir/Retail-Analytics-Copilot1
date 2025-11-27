@@ -1,0 +1,4 @@
+{"id":"q1","question":"What were the total revenue and average order value for June 2024?","expected_route":"hybrid","format_hint":"{total_revenue:float, aov:float}"}
+{"id":"q2","question":"List the top 3 best selling products by quantity in July 2024.","expected_route":"sql","format_hint":"[{product: str, quantity:int}]"}
+{"id":"q3","question":"What is our return policy for beverages?","expected_route":"rag","format_hint":"str"}
+{"id":"q4","question":"Show me units per transaction for the last quarter and link any related product policy references.","expected_route":"hybrid","format_hint":"{units_per_tx:float}"}
