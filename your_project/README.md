@@ -1,49 +1,116 @@
-# your_project — Hybrid RAG + SQL Agent Skeleton
+# 🚀 Retail Analytics Copilot — Hybrid RAG + SQL Agent (LangGraph + DSPy)
 
-This repository is a small skeleton showing how to structure a hybrid agent combining RAG-document search and SQL execution.
+A full AI-powered analytics assistant using Hybrid Retrieval, SQL execution, DSPy optimization, and LangGraph pipelines.
 
-Structure
-```
+# 📌 📖 Project Overview
+
+This project is a Hybrid RAG + SQL AI Agent designed for retail analytics.
+It can answer questions using:
+
+✔ RAG (text documents)
+✔ SQL (northwind.sqlite database)
+✔ Hybrid reasoning (RAG + SQL together)
+
+The agent:
+
+Reads business documents (marketing calendar, KPIs, catalog, policies)
+
+Searches documents using TF-IDF retriever
+
+Reads SQL data from Northwind dataset
+
+Converts user questions → SQL queries using NL→SQL module
+
+Uses LangGraph nodes with repair loops
+
+Generates final answers with citations
+
+It behaves like a smart retail analytics assistant capable of answering:
+
+“What was the revenue during Black Friday?”
+
+“Give me the AOV for beverages in Q2.”
+
+“What is our return policy for dairy?”
+
+“Compare sales performance during Winter Sale vs Spring Promotion.”
+
+# 📁 🗂 Project Structure
 your_project/
 ├─ agent/
-│  ├─ graph_hybrid.py
-│  ├─ dspy_signatures.py
-│  ├─ rag/retrieval.py
-│  └─ tools/sqlite_tool.py
+│  ├─ graph_hybrid.py             # LangGraph pipeline (≥ 6 nodes + repair loop)
+│  ├─ dspy_signatures.py          # DSPy modules (Router, NL→SQL, Synthesizer)
+│  ├─ rag/
+│  │   └─ retrieval.py            # TF-IDF retriever (chunking + search)
+│  └─ tools/
+│      └─ sqlite_tool.py          # Safe SQL executor + schema introspection
+│
 ├─ data/
-│  └─ northwind.sqlite (create with data/create_sample_db.py)
+│  └─ northwind.sqlite            # Retail SQL database (Orders, Products, etc.)
+│
 ├─ docs/
-│  ├─ marketing_calendar.md
-│  ├─ kpi_definitions.md
-│  ├─ catalog.md
-│  └─ product_policy.md
-├─ sample_questions_hybrid_eval.jsonl
-├─ run_agent_hybrid.py
-└─ requirements.txt
-```
+│  ├─ marketing_calendar.md       # RAG document 1
+│  ├─ kpi_definitions.md          # RAG document 2
+│  ├─ catalog.md                  # RAG document 3
+│  └─ product_policy.md           # RAG document 4
+│
+├─ sample_questions_hybrid_eval.jsonl   # Test questions for evaluation
+├─ run_agent_hybrid.py                  # Main script: runs the Hybrid Agent
+└─ requirements.txt                     # Python dependencies
 
-Quick start
+# 🧠 ✨ Key Features
+🔹 1. Hybrid RAG + SQL Agent
 
-1. From `your_project` folder install the environment:
+The system uses both text retrieval + SQL queries to answer questions accurately.
 
-```powershell
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-```
+🔹 2. LangGraph Workflow (≥ 6 Nodes)
 
-2. Create a sample DB for local tests:
+Includes nodes for:
 
-```powershell
-python data/create_sample_db.py
-```
+Routing
 
-3. Run the lightweight runner (no LM required):
+Retrieval
 
-```powershell
-python run_agent_hybrid.py -q "What were the total revenue and average order value for June 2024?"
-```
+Planning
 
-Notes
-- The agent modules in `agent/` are copies placed in this skeleton so they don't modify your existing files.
-- The `run_agent_hybrid.py` uses a small heuristic for SQL and retrieval to enable quick local testing without an LM.
+SQL generation
+
+SQL execution
+
+Hybrid fusion
+
+Synthesis
+
+Repair loop for SQL errors
+
+# 🔹 3. DSPy Optimization
+
+DSPy modules trained for:
+
+Question Routing (RAG / SQL / Hybrid)
+
+NL → SQL generation
+
+Answer synthesis
+
+# 🔹 4. TF-IDF Retriever
+
+Document search using:
+
+Chunking
+
+TF-IDF vectorization
+
+Top-k retrieval
+
+Document citations
+
+# 🔹 5. SQLite Integration
+
+Executes SQL queries safely with:
+
+Schema reading
+
+Error handling
+
+Query repair on failures
